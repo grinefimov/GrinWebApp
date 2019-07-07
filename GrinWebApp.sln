@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrinWebApp", "GrinWebApp\GrinWebApp.csproj", "{0E9417C8-42E4-4A8F-BC8B-9D1106645066}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWebApp", "ApiWebApp\ApiWebApp.csproj", "{4D55762D-0CA0-4999-AFCB-424BFEB4069F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{159787C9-9181-4C72-B4E6-0B1A890F1705}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E9417C8-42E4-4A8F-BC8B-9D1106645066}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E9417C8-42E4-4A8F-BC8B-9D1106645066}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E9417C8-42E4-4A8F-BC8B-9D1106645066}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E9417C8-42E4-4A8F-BC8B-9D1106645066}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08F8203A-271C-412E-8678-A7696CDF43DE}
+	EndGlobalSection
+EndGlobal
