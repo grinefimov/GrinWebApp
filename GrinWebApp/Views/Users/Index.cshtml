@@ -5,38 +5,60 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Users</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table text-light">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Login)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Password)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Login)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Password)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<form asp-controller="Users" asp-action="Index" class="form-inline" method="get">
+    <p>
+        <input class="form-control mb-2 mb-sm-0 mr-1" type="search" placeholder="Search" name="SearchString">
+        <select class="form-control mb-2 mb-sm-0 mr-1" name="Permission">
+            <option value="">All</option>
+            <option value="User">User</option>
+            <option value="Admin">Admin</option>
+        </select>
+        <input class="btn btn-outline-primary" type="submit" value="Search" />
+    </p>
+</form>
+<div class="table-responsive">
+    <table class="table text-light">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Login)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Password)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Permission)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Permission)
+                    </td>
+                    <td>
+                        <span style="white-space: nowrap">
+                            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        </span>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

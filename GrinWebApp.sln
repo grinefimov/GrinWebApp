@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GrinWebApp", "GrinWebApp\Gr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiWebApp", "ApiWebApp\ApiWebApp.csproj", "{4D55762D-0CA0-4999-AFCB-424BFEB4069F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcWebApp", "MvcWebApp\MvcWebApp.csproj", "{159787C9-9181-4C72-B4E6-0B1A890F1705}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcWebAppWithAuthentication", "MvcWebAppWithAuthentication\MvcWebAppWithAuthentication.csproj", "{7DAA3489-9FBE-495D-8C5E-F30ECEF34F96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4D55762D-0CA0-4999-AFCB-424BFEB4069F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{159787C9-9181-4C72-B4E6-0B1A890F1705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DAA3489-9FBE-495D-8C5E-F30ECEF34F96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DAA3489-9FBE-495D-8C5E-F30ECEF34F96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DAA3489-9FBE-495D-8C5E-F30ECEF34F96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DAA3489-9FBE-495D-8C5E-F30ECEF34F96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,9 +19,23 @@ namespace GrinWebApp.Controllers
         }
 
         // GET: Users
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString, string permission)
         {
-            return View(await _context.User.ToListAsync());
+            var movies = from m in _context.User
+                select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                movies = movies.Where(s => s.Login.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(permission))
+            {
+                movies = movies.Where(x => x.Permission == permission);
+            }
+
+
+            return View(await movies.ToListAsync());
         }
 
         // GET: Users/Details/5
@@ -53,7 +67,7 @@ namespace GrinWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Login,Password,Permission")] User user)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +99,7 @@ namespace GrinWebApp.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Permission")] User user)
         {
             if (id != user.Id)
             {

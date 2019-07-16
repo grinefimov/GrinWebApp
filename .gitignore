@@ -5,11 +5,7 @@
 
 # Unwanted project folders
 ApiWebApp/
-MvcWebApp/
-
-# Unwanted project folders
-ApiWebApp/
-MvcWebApp/
+MvcWebAppWithAuthentication/
 
 # User-specific files
 *.rsuser
