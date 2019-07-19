@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace GrinWebApp.Models
 {
-    public class User
+    public class Member
     {
         public int Id { get; set; }
         public string Login { get; set; }

@@ -6,13 +6,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GrinWebApp.Models
 {
-    public class UserContext : DbContext
+    public class MemberContext : DbContext
     {
-        public UserContext(DbContextOptions<UserContext> options)
+        public MemberContext(DbContextOptions<MemberContext> options)
             : base(options)
         {
         }
 
-        public DbSet<GrinWebApp.Models.User> User { get; set; }
+        public DbSet<GrinWebApp.Models.Member> Member { get; set; }
     }
 }

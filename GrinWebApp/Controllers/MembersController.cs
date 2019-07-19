@@ -9,36 +9,36 @@ using GrinWebApp.Models;
 
 namespace GrinWebApp.Controllers
 {
-    public class UsersController : Controller
+    public class MembersController : Controller
     {
-        private readonly UserContext _context;
+        private readonly MemberContext _context;
 
-        public UsersController(UserContext context)
+        public MembersController(MemberContext context)
         {
             _context = context;
         }
 
-        // GET: Users
+        // GET: Members
         public async Task<IActionResult> Index(string searchString, string permission)
         {
-            var movies = from m in _context.User
+            var members = from m in _context.Member
                 select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(s => s.Login.Contains(searchString));
+                members = members.Where(s => s.Login.Contains(searchString));
             }
 
             if (!string.IsNullOrEmpty(permission))
             {
-                movies = movies.Where(x => x.Permission == permission);
+                members = members.Where(x => x.Permission == permission);
             }
 
 
-            return View(await movies.ToListAsync());
+            return View(await members.ToListAsync());
         }
 
-        // GET: Users/Details/5
+        // GET: Members/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -46,39 +46,39 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var Member = await _context.Member
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (Member == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(Member);
         }
 
-        // GET: Users/Create
+        // GET: Members/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Users/Create
+        // POST: Members/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password,Permission")] User user)
+        public async Task<IActionResult> Create([Bind("Id,Login,Password,Permission")] Member member)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
+                _context.Add(member);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(member);
         }
 
-        // GET: Users/Edit/5
+        // GET: Members/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -86,22 +86,22 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
+            var Member = await _context.Member.FindAsync(id);
+            if (Member == null)
             {
                 return NotFound();
             }
-            return View(user);
+            return View(Member);
         }
 
-        // POST: Users/Edit/5
+        // POST: Members/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Permission")] User user)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Permission")] Member member)
         {
-            if (id != user.Id)
+            if (id != member.Id)
             {
                 return NotFound();
             }
@@ -110,12 +110,12 @@ namespace GrinWebApp.Controllers
             {
                 try
                 {
-                    _context.Update(user);
+                    _context.Update(member);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!UserExists(user.Id))
+                    if (!MemberExists(member.Id))
                     {
                         return NotFound();
                     }
@@ -126,10 +126,10 @@ namespace GrinWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(user);
+            return View(member);
         }
 
-        // GET: Users/Delete/5
+        // GET: Members/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -137,30 +137,30 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var user = await _context.User
+            var Member = await _context.Member
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (user == null)
+            if (Member == null)
             {
                 return NotFound();
             }
 
-            return View(user);
+            return View(Member);
         }
 
-        // POST: Users/Delete/5
+        // POST: Members/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var user = await _context.User.FindAsync(id);
-            _context.User.Remove(user);
+            var Member = await _context.Member.FindAsync(id);
+            _context.Member.Remove(Member);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UserExists(int id)
+        private bool MemberExists(int id)
         {
-            return _context.User.Any(e => e.Id == id);
+            return _context.Member.Any(e => e.Id == id);
         }
     }
 }

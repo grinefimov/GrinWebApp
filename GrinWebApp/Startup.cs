@@ -31,8 +31,8 @@ namespace GrinWebApp
                 options.CheckConsentNeeded = context => true;
             });
             services.AddControllersWithViews();
-            services.AddDbContext<UserContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("UserContext")));
+            services.AddDbContext<MemberContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MemberContext")));
         }
 
 

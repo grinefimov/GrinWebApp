@@ -1,11 +1,11 @@
-﻿@model IEnumerable<GrinWebApp.Models.User>
+﻿@model IEnumerable<GrinWebApp.Models.Member>
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Users</h1>
+<h1>Members</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -15,7 +15,7 @@
         <input class="form-control mb-2 mb-sm-0 mr-1" type="search" placeholder="Search" name="SearchString">
         <select class="form-control mb-2 mb-sm-0 mr-1" name="Permission">
             <option value="">All</option>
-            <option value="User">User</option>
+            <option value="Member">Member</option>
             <option value="Admin">Admin</option>
         </select>
         <input class="btn btn-outline-primary" type="submit" value="Search" />

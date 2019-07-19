@@ -3,16 +3,14 @@ using GrinWebApp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GrinWebApp.Migrations
 {
-    [DbContext(typeof(UserContext))]
-    [Migration("20190707190049_Initial")]
-    partial class Initial
+    [DbContext(typeof(MemberContext))]
+    partial class MemberContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -20,7 +18,7 @@ namespace GrinWebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GrinWebApp.Models.User", b =>
+            modelBuilder.Entity("GrinWebApp.Models.Member", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -30,9 +28,11 @@ namespace GrinWebApp.Migrations
 
                     b.Property<string>("Password");
 
+                    b.Property<string>("Permission");
+
                     b.HasKey("Id");
 
-                    b.ToTable("User");
+                    b.ToTable("Member");
                 });
 #pragma warning restore 612, 618
         }
