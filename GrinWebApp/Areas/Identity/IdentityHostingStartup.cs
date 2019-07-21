@@ -20,7 +20,9 @@ namespace GrinWebApp.Areas.Identity
                     options.UseSqlServer(
                         context.Configuration.GetConnectionString("UserContextConnection")));
 
-                services.AddDefaultIdentity<User>()
+                services.AddDefaultIdentity<User>( options =>
+                        options.SignIn.RequireConfirmedAccount = true)
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<UserContext>();
             });
         }
