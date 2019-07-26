@@ -4,12 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
 # Unwanted project folders
-ApiWebApp/
-MvcWebApp/
-
-# Unwanted project folders
-ApiWebApp/
-MvcWebApp/
+MvcWebAppWithAuthentication/
 
 # User-specific files
 *.rsuser
