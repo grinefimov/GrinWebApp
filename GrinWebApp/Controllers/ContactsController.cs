@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GrinWebApp.Views.Home
 {
-    [AllowAnonymous]
     public class ContactsController : Controller
     {
         private readonly ContactContext _context;

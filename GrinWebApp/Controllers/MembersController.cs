@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GrinWebApp.Controllers
 {
+    [Authorize(Policy = "AdministratorOnly")]
     public class MembersController : Controller
     {
         private readonly MemberContext _context;

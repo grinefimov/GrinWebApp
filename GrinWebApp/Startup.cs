@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using GrinWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -39,6 +40,11 @@ namespace GrinWebApp
                     .RequireAuthenticatedUser()
                     .Build();
                 config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdministratorOnly", policy =>
+                    policy.RequireClaim(ClaimTypes.Role, "Administrator"));
             });
             services.AddDbContext<MemberContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MemberContext")));

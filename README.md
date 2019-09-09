@@ -1,1 +1,3 @@
-GrinWebApp
+# GrinWebApp
+
+![screenshot](/screenshot.png)
