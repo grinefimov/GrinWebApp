@@ -42,6 +42,8 @@ namespace GrinWebApp
             });
             services.AddDbContext<MemberContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("MemberContext")));
+            services.AddDbContext<ContactContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("ContactContext")));
         }
 
 
