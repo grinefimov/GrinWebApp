@@ -14,6 +14,7 @@ namespace GrinWebApp.Controllers
         {
             return View();
         }
+        
         public IActionResult Text()
         {
             return View();

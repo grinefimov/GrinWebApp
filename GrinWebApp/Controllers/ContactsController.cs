@@ -8,39 +8,43 @@ using Microsoft.EntityFrameworkCore;
 using GrinWebApp.Models;
 using Microsoft.AspNetCore.Authorization;
 
-namespace GrinWebApp.Controllers
+namespace GrinWebApp.Views.Home
 {
-    [Authorize(Policy = "AdministratorOnly")]
-    public class MembersController : Controller
+    public class ContactsController : Controller
     {
-        private readonly MemberContext _context;
+        private readonly ContactContext _context;
 
-        public MembersController(MemberContext context)
+        public ContactsController(ContactContext context)
         {
             _context = context;
         }
 
-        // GET: Members
-        public async Task<IActionResult> Index(string searchString, string permission)
+        // GET: Contacts
+        public async Task<IActionResult> Index(string searchString, string status)
         {
-            var members = from m in _context.Member
+            var members = from m in _context.Contact
                 select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                members = members.Where(s => s.Login.Contains(searchString));
+                members = members.Where(c => c.Name.Contains(searchString));
             }
 
-            if (!string.IsNullOrEmpty(permission))
+            if (!string.IsNullOrEmpty(status))
             {
-                members = members.Where(x => x.Permission == permission);
+                ContactStatus contactStatus = ContactStatus.Submitted;
+                switch (status)
+                {
+                    case "Approved": contactStatus = ContactStatus.Approved; break;
+                    case "Rejected": contactStatus = ContactStatus.Rejected; break;
+                }
+                members = members.Where(c => c.Status == contactStatus);
             }
 
-
-            return View(await members.ToListAsync());
+            return View(await _context.Contact.ToListAsync());
         }
 
-        // GET: Members/Details/5
+        // GET: Contacts/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,39 +52,39 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var Member = await _context.Member
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (Member == null)
+            var contact = await _context.Contact
+                .FirstOrDefaultAsync(m => m.ContactId == id);
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            return View(Member);
+            return View(contact);
         }
 
-        // GET: Members/Create
+        // GET: Contacts/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Members/Create
+        // POST: Contacts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Login,Password,Permission")] Member member)
+        public async Task<IActionResult> Create([Bind("ContactId,OwnerID,Name,Address,City,State,Zip,Email,Status")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(member);
+                _context.Add(contact);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(member);
+            return View(contact);
         }
 
-        // GET: Members/Edit/5
+        // GET: Contacts/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -88,22 +92,22 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var Member = await _context.Member.FindAsync(id);
-            if (Member == null)
+            var contact = await _context.Contact.FindAsync(id);
+            if (contact == null)
             {
                 return NotFound();
             }
-            return View(Member);
+            return View(contact);
         }
 
-        // POST: Members/Edit/5
+        // POST: Contacts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Login,Password,Permission")] Member member)
+        public async Task<IActionResult> Edit(int id, [Bind("ContactId,OwnerID,Name,Address,City,State,Zip,Email,Status")] Contact contact)
         {
-            if (id != member.Id)
+            if (id != contact.ContactId)
             {
                 return NotFound();
             }
@@ -112,12 +116,12 @@ namespace GrinWebApp.Controllers
             {
                 try
                 {
-                    _context.Update(member);
+                    _context.Update(contact);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MemberExists(member.Id))
+                    if (!ContactExists(contact.ContactId))
                     {
                         return NotFound();
                     }
@@ -128,10 +132,10 @@ namespace GrinWebApp.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(member);
+            return View(contact);
         }
 
-        // GET: Members/Delete/5
+        // GET: Contacts/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -139,30 +143,30 @@ namespace GrinWebApp.Controllers
                 return NotFound();
             }
 
-            var Member = await _context.Member
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (Member == null)
+            var contact = await _context.Contact
+                .FirstOrDefaultAsync(m => m.ContactId == id);
+            if (contact == null)
             {
                 return NotFound();
             }
 
-            return View(Member);
+            return View(contact);
         }
 
-        // POST: Members/Delete/5
+        // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var Member = await _context.Member.FindAsync(id);
-            _context.Member.Remove(Member);
+            var contact = await _context.Contact.FindAsync(id);
+            _context.Contact.Remove(contact);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MemberExists(int id)
+        private bool ContactExists(int id)
         {
-            return _context.Member.Any(e => e.Id == id);
+            return _context.Contact.Any(e => e.ContactId == id);
         }
     }
 }
