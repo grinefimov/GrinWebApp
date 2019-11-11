@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GrinWebApp.Controllers
@@ -14,7 +10,7 @@ namespace GrinWebApp.Controllers
         {
             return View();
         }
-        
+
         public IActionResult Text()
         {
             return View();

@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using GrinWebApp.Models;
+using GrinWebApp.Data;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -38,7 +38,7 @@ namespace GrinWebApp
                     policy.RequireClaim(ClaimTypes.Role, "Administrator"));
             });
             services.AddDbContext<ContactContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("ContactContext")));
+                options.UseSqlServer(Configuration.GetConnectionString("GrinWebApp")));
         }
 
 

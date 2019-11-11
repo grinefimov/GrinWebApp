@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GrinWebApp.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GrinWebApp.Models
+namespace GrinWebApp.Data
 {
     public class ContactContext : DbContext
     {
@@ -13,6 +10,6 @@ namespace GrinWebApp.Models
         {
         }
 
-        public DbSet<GrinWebApp.Models.Contact> Contact { get; set; }
+        public DbSet<Contact> Contact { get; set; }
     }
 }

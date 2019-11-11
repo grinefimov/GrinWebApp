@@ -18,7 +18,7 @@ namespace GrinWebApp.Areas.Identity
             builder.ConfigureServices((context, services) => {
                 services.AddDbContext<UserContext>(options =>
                     options.UseSqlServer(
-                        context.Configuration.GetConnectionString("UserContextConnection")));
+                        context.Configuration.GetConnectionString("GrinWebApp")));
 
                 services.AddDefaultIdentity<User>( options =>
                         options.SignIn.RequireConfirmedAccount = true)

@@ -1,5 +1,3 @@
-using System;
-
 namespace GrinWebApp.Models
 {
     public class ErrorViewModel
